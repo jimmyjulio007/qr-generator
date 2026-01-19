@@ -2,6 +2,10 @@ import { z } from 'zod';
 
 export type QRType = 'url' | 'text' | 'phone' | 'email' | 'whatsapp' | 'wifi' | 'location';
 
+export type DotsPattern = 'square' | 'dots' | 'rounded' | 'extra-rounded' | 'classy' | 'classy-rounded';
+export type EyeStyle = 'square' | 'rounded' | 'extra-rounded';
+export type GradientType = 'none' | 'linear' | 'radial';
+
 export const qrFormSchema = z.object({
     type: z.enum(['url', 'text', 'phone', 'email', 'whatsapp', 'wifi', 'location']).default('url'),
     url: z.string().url().optional().or(z.literal('')),
@@ -27,50 +31,26 @@ export const qrFormSchema = z.object({
         lng: z.string().optional().default(''),
     }).optional().default({ lat: '', lng: '' }),
     // Customization
-    fgColor: z.string().default('#000000'),
+    fgColor: z.string().default('#0f172a'),
     bgColor: z.string().default('#ffffff'),
     size: z.number().min(128).max(1024).default(512),
-    level: z.enum(['L', 'M', 'Q', 'H']).default('L'),
+    level: z.enum(['L', 'M', 'Q', 'H']).default('Q'),
     margin: z.boolean().default(true),
-    rounded: z.boolean().default(false),
+    dotsPattern: z.enum(['square', 'dots', 'rounded', 'extra-rounded', 'classy', 'classy-rounded']).default('square'),
+    eyeStyle: z.enum(['square', 'rounded', 'extra-rounded']).default('square'),
+    eyeColor: z.string().optional(),
+    gradientType: z.enum(['none', 'linear', 'radial']).default('none'),
+    gradientColor1: z.string().default('#0f172a'),
+    gradientColor2: z.string().default('#3b82f6'),
+    gradientRotation: z.number().min(0).max(360).default(0),
     logo: z.string().optional(), // base64 logo
 });
 
-export type QRFormData = {
-    type: QRType;
-    url: string;
-    text: string;
-    phone: string;
-    email: {
-        address: string;
-        subject: string;
-        body: string;
-    };
-    whatsapp: {
-        phone: string;
-        message: string;
-    };
-    wifi: {
-        ssid: string;
-        password: string;
-        encryption: 'WPA' | 'WEP' | 'nopass';
-        hidden: boolean;
-    };
-    location: {
-        lat: string;
-        lng: string;
-    };
-    fgColor: string;
-    bgColor: string;
-    size: number;
-    level: 'L' | 'M' | 'Q' | 'H';
-    margin: boolean;
-    rounded: boolean;
-    logo?: string;
-};
+export type QRFormData = z.infer<typeof qrFormSchema>;
 
 export interface QRHistoryItem extends QRFormData {
     id: string;
     name: string;
     createdAt: number;
 }
+

@@ -9,6 +9,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
     Select,
     SelectContent,
@@ -25,10 +26,10 @@ export function URLForm() {
             control={control}
             name="url"
             render={({ field }) => (
-                <FormItem>
-                    <FormLabel>URL</FormLabel>
+                <FormItem className="space-y-3">
+                    <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Endpoint URL</FormLabel>
                     <FormControl>
-                        <Input placeholder="https://example.com" {...field} />
+                        <Input placeholder="https://your-domain.com" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                     </FormControl>
                     <FormMessage />
                 </FormItem>
@@ -44,10 +45,10 @@ export function TextForm() {
             control={control}
             name="text"
             render={({ field }) => (
-                <FormItem>
-                    <FormLabel>Text Content</FormLabel>
+                <FormItem className="space-y-3">
+                    <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Plain Text Payload</FormLabel>
                     <FormControl>
-                        <Input placeholder="Enter your text here" {...field} />
+                        <Textarea placeholder="Type your message here..." className="min-h-[100px] rounded-xl border-border bg-background focus-visible:ring-primary/20 resize-none" {...field} />
                     </FormControl>
                     <FormMessage />
                 </FormItem>
@@ -63,10 +64,10 @@ export function PhoneForm() {
             control={control}
             name="phone"
             render={({ field }) => (
-                <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                <FormItem className="space-y-3">
+                    <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Contact Number</FormLabel>
                     <FormControl>
-                        <Input placeholder="+1 234 567 890" {...field} />
+                        <Input placeholder="+1 (555) 000-0000" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                     </FormControl>
                     <FormMessage />
                 </FormItem>
@@ -78,15 +79,15 @@ export function PhoneForm() {
 export function EmailForm() {
     const { control } = useFormContext<QRFormData>();
     return (
-        <div className="space-y-4">
+        <div className="space-y-5">
             <FormField
                 control={control}
                 name="email.address"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Email Address</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Recipient Address</FormLabel>
                         <FormControl>
-                            <Input placeholder="hello@example.com" {...field} />
+                            <Input placeholder="contact@brand.com" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -96,10 +97,10 @@ export function EmailForm() {
                 control={control}
                 name="email.subject"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Subject</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Message Subject</FormLabel>
                         <FormControl>
-                            <Input placeholder="Inquiry" {...field} />
+                            <Input placeholder="Inquiry regarding services" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -112,15 +113,15 @@ export function EmailForm() {
 export function WhatsAppForm() {
     const { control } = useFormContext<QRFormData>();
     return (
-        <div className="space-y-4">
+        <div className="space-y-5">
             <FormField
                 control={control}
                 name="whatsapp.phone"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>WhatsApp Number</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">WhatsApp ID (Phone)</FormLabel>
                         <FormControl>
-                            <Input placeholder="+1234567890" {...field} />
+                            <Input placeholder="15550000000" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -130,10 +131,10 @@ export function WhatsAppForm() {
                 control={control}
                 name="whatsapp.message"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Message (Optional)</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Initial Greeting</FormLabel>
                         <FormControl>
-                            <Input placeholder="Hello!" {...field} />
+                            <Input placeholder="I'm interested in your work." className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -146,55 +147,57 @@ export function WhatsAppForm() {
 export function WiFiForm() {
     const { control } = useFormContext<QRFormData>();
     return (
-        <div className="space-y-4">
+        <div className="space-y-5">
             <FormField
                 control={control}
                 name="wifi.ssid"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>SSID (Network Name)</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Network Name (SSID)</FormLabel>
                         <FormControl>
-                            <Input placeholder="Home_Network" {...field} />
+                            <Input placeholder="Studio_Private_5G" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
                 )}
             />
-            <FormField
-                control={control}
-                name="wifi.password"
-                render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Password</FormLabel>
-                        <FormControl>
-                            <Input type="password" placeholder="********" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
-            <FormField
-                control={control}
-                name="wifi.encryption"
-                render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Encryption</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+            <div className="grid grid-cols-2 gap-4">
+                <FormField
+                    control={control}
+                    name="wifi.password"
+                    render={({ field }) => (
+                        <FormItem className="space-y-3">
+                            <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Security Key</FormLabel>
                             <FormControl>
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select Encryption" />
-                                </SelectTrigger>
+                                <Input type="password" placeholder="••••••••" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                             </FormControl>
-                            <SelectContent>
-                                <SelectItem value="WPA">WPA/WPA2</SelectItem>
-                                <SelectItem value="WEP">WEP</SelectItem>
-                                <SelectItem value="nopass">None</SelectItem>
-                            </SelectContent>
-                        </Select>
-                        <FormMessage />
-                    </FormItem>
-                )}
-            />
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={control}
+                    name="wifi.encryption"
+                    render={({ field }) => (
+                        <FormItem className="space-y-3">
+                            <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Protocol</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger className="h-12 rounded-xl border-border bg-background focus:ring-primary/20">
+                                        <SelectValue placeholder="Protocol" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent className="rounded-xl border-border shadow-2xl bg-card">
+                                    <SelectItem value="WPA">WPA/WPA2</SelectItem>
+                                    <SelectItem value="WEP">WEP</SelectItem>
+                                    <SelectItem value="nopass">Open</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+            </div>
         </div>
     );
 }
@@ -202,15 +205,15 @@ export function WiFiForm() {
 export function LocationForm() {
     const { control } = useFormContext<QRFormData>();
     return (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-5">
             <FormField
                 control={control}
                 name="location.lat"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Latitude</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Latitude</FormLabel>
                         <FormControl>
-                            <Input placeholder="0.0000" {...field} />
+                            <Input placeholder="40.7128" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
@@ -220,10 +223,10 @@ export function LocationForm() {
                 control={control}
                 name="location.lng"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Longitude</FormLabel>
+                    <FormItem className="space-y-3">
+                        <FormLabel className="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">Longitude</FormLabel>
                         <FormControl>
-                            <Input placeholder="0.0000" {...field} />
+                            <Input placeholder="-74.0060" className="h-12 rounded-xl border-border bg-background focus-visible:ring-primary/20" {...field} />
                         </FormControl>
                         <FormMessage />
                     </FormItem>
