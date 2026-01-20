@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, memo } from "react";
-import QRCodeStyling, {
-    type Options,
-    type ErrorCorrectionLevel,
-    type DotType,
-    type CornerSquareType,
-    type CornerDotType
+import { useEffect, useRef, memo, useState } from "react";
+import type QRCodeStyling from "qr-code-styling";
+import type {
+    Options,
+    ErrorCorrectionLevel,
+    DotType,
+    CornerSquareType,
+    CornerDotType
 } from "qr-code-styling";
 import { Button } from "@/components/ui/button";
 import { Share2, FileJson, Image as ImageIcon, Sparkles } from "lucide-react";
@@ -22,15 +23,36 @@ interface QRPreviewProps {
 const QRPreviewComponent = ({ data }: QRPreviewProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const qrCodeRef = useRef<QRCodeStyling | null>(null);
+    const [isLibraryLoaded, setIsLibraryLoaded] = useState(false);
     const value = encodeQRData(data);
+
+    // Dynamically load QR code library
+    useEffect(() => {
+        let mounted = true;
+
+        import('qr-code-styling').then((QRCodeStylingModule) => {
+            if (mounted) {
+                // Store the default export class
+                (window as any).QRCodeStyling = QRCodeStylingModule.default;
+                setIsLibraryLoaded(true);
+            }
+        });
+
+        return () => {
+            mounted = false;
+        };
+    }, []);
 
     // Initialize and update QR Code
     useEffect(() => {
-        if (!containerRef.current) return;
+        if (!containerRef.current || !isLibraryLoaded) return;
+
+        const QRCodeStylingClass = (window as any).QRCodeStyling;
+        if (!QRCodeStylingClass) return;
 
         // Create QR instance if it doesn't exist
         if (!qrCodeRef.current) {
-            qrCodeRef.current = new QRCodeStyling({
+            qrCodeRef.current = new QRCodeStylingClass({
                 width: 320,
                 height: 320,
                 type: 'svg',
@@ -60,7 +82,9 @@ const QRPreviewComponent = ({ data }: QRPreviewProps) => {
 
             // Clear container and append
             containerRef.current.innerHTML = '';
-            qrCodeRef.current.append(containerRef.current);
+            if (qrCodeRef.current) {
+                qrCodeRef.current.append(containerRef.current);
+            }
         }
 
         // Update with current data
@@ -106,8 +130,10 @@ const QRPreviewComponent = ({ data }: QRPreviewProps) => {
             } : {})
         };
 
-        qrCodeRef.current.update(options);
-    }, [value, data.fgColor, data.bgColor, data.margin, data.level, data.dotsPattern, data.gradientType, data.gradientColor1, data.gradientColor2, data.gradientRotation, data.eyeStyle, data.eyeColor, data.logo]);
+        if (qrCodeRef.current) {
+            qrCodeRef.current.update(options);
+        }
+    }, [isLibraryLoaded, value, data.fgColor, data.bgColor, data.margin, data.level, data.dotsPattern, data.gradientType, data.gradientColor1, data.gradientColor2, data.gradientRotation, data.eyeStyle, data.eyeColor, data.logo]);
 
     const download = (ext: 'png' | 'svg') => {
         if (!qrCodeRef.current) return;

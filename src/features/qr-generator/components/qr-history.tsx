@@ -35,7 +35,7 @@ export function QRHistory({ history, deleteHistory, onSelect }: QRHistoryProps) 
                 <div className="w-16 h-16 rounded-full bg-background border border-border flex items-center justify-center mb-4 shadow-sm">
                     <History className="w-8 h-8 text-muted-foreground" />
                 </div>
-                <h3 className="text-xl font-black italic tracking-tight">Empty Workspace</h3>
+                <p className="text-xl font-black italic tracking-tight">Empty Workspace</p>
                 <p className="text-muted-foreground text-sm max-w-[220px] mt-2 font-medium">Your creative artifacts will appear here once saved.</p>
             </motion.div>
         );

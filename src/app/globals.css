@@ -99,6 +99,18 @@
   body {
     @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground antialiased;
   }
+
+  /* Performance optimizations */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Optimize rendering for interactive elements */
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
 }
 
 /* Custom Scrollbar */
@@ -126,8 +138,34 @@
 .qr-container svg {
   width: 100% !important;
   height: 100% !important;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: contents;
 }
 
 .backdrop-blur-studio {
   backdrop-filter: blur(16px) saturate(180%);
+}
+
+/* Performance: Contain layout for cards and isolated sections */
+.card,
+[data-radix-dialog-content],
+[data-radix-popover-content] {
+  contain: layout style paint;
+}
+
+/* Optimize animations for GPU */
+@media (prefers-reduced-motion: no-preference) {
+  [data-state],
+  .animate-in,
+  .animate-out {
+    will-change: transform, opacity;
+  }
+}
+
+/* Remove will-change after animation completes to free resources */
+@media (prefers-reduced-motion: no-preference) {
+  *:not(:hover):not(:focus):not(:active) {
+    will-change: auto;
+  }
 }

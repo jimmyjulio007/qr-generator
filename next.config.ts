@@ -4,6 +4,22 @@ const nextConfig: NextConfig = {
   // Enable source maps in production for better debugging and Lighthouse insights
   productionBrowserSourceMaps: true,
 
+  // Compiler optimizations for modern browsers
+  compiler: {
+    // Remove console.log in production
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
+  },
+
+  // Target modern browsers to reduce polyfills
+  experimental: {
+    // Optimize CSS loading
+    optimizeCss: true,
+    // Optimize package imports
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-hook-form'],
+  },
+
   // Security headers
   async headers() {
     return [

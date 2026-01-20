@@ -121,7 +121,7 @@ const QRControlsComponent = () => {
                                         <Label>Color Fill Strategy</Label>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
-                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold">
+                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold" aria-label="Select color fill strategy">
                                                     <SelectValue />
                                                 </SelectTrigger>
                                             </FormControl>
@@ -249,7 +249,7 @@ const QRControlsComponent = () => {
                                         <Label tooltip="Defines the geometric shape of individual data modules.">Module Geometry</Label>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
-                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold">
+                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold" aria-label="Select module geometry pattern">
                                                     <SelectValue />
                                                 </SelectTrigger>
                                             </FormControl>
@@ -274,7 +274,7 @@ const QRControlsComponent = () => {
                                         <Label tooltip="Defines the shape of the three large corner alignment patterns.">Eye Morphology</Label>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
-                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold">
+                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold" aria-label="Select eye morphology style">
                                                     <SelectValue />
                                                 </SelectTrigger>
                                             </FormControl>
@@ -302,10 +302,11 @@ const QRControlsComponent = () => {
                             <AnimatePresence>
                                 {watch("eyeColor") !== undefined && (
                                     <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: "auto" }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="overflow-hidden"
+                                        initial={{ opacity: 0, scaleY: 0 }}
+                                        animate={{ opacity: 1, scaleY: 1 }}
+                                        exit={{ opacity: 0, scaleY: 0 }}
+                                        transition={{ duration: 0.2, ease: "easeOut" }}
+                                        className="overflow-hidden origin-top"
                                     >
                                         <FormField
                                             control={control}
@@ -336,7 +337,7 @@ const QRControlsComponent = () => {
                                         <Label tooltip="Ability to survive damage/obstruction. High allows for larger logos.">Error Tolerance</Label>
                                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                                             <FormControl>
-                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold">
+                                                <SelectTrigger className="h-12 rounded-xl bg-background border-border font-bold" aria-label="Select error tolerance level">
                                                     <SelectValue />
                                                 </SelectTrigger>
                                             </FormControl>
