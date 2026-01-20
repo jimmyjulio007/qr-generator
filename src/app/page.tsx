@@ -36,7 +36,7 @@ export default function Home() {
                   <Layers className="w-7 h-7" />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-black tracking-tight italic">Vector Core</h3>
+                  <h2 className="text-3xl font-black tracking-tight italic">Vector Core</h2>
                   <p className="text-muted-foreground text-lg leading-relaxed font-medium">Export in SVG or High-Res PDF. Every code is a mathematical construct, ready for large-scale billboard printing.</p>
                 </div>
               </div>
@@ -45,7 +45,7 @@ export default function Home() {
                   <Zap className="w-7 h-7" />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-black tracking-tight italic">Studio Tools</h3>
+                  <h2 className="text-3xl font-black tracking-tight italic">Studio Tools</h2>
                   <p className="text-muted-foreground text-lg leading-relaxed font-medium">Full control over dot geometry, eye shapes, and gradient rotations. Align your QR code perfectly with your brand identity.</p>
                 </div>
               </div>
@@ -54,7 +54,7 @@ export default function Home() {
                   <ShieldCheck className="w-7 h-7" />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-black tracking-tight italic">Zero Leak</h3>
+                  <h2 className="text-3xl font-black tracking-tight italic">Zero Leak</h2>
                   <p className="text-muted-foreground text-lg leading-relaxed font-medium">Local-first generation. Your sensitive endpoint data never touches a server, staying entirely within your browser's memory.</p>
                 </div>
               </div>
@@ -64,11 +64,11 @@ export default function Home() {
               <h2 className="text-5xl md:text-7xl font-black text-center tracking-tighter leading-tight italic">Detail is the <span className="text-muted-foreground">differentiation</span>.</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
                 <div className="space-y-6">
-                  <h4 className="text-2xl font-black tracking-tight">Static vs. Dynamic</h4>
+                  <h3 className="text-2xl font-black tracking-tight">Static vs. Dynamic</h3>
                   <p className="text-muted-foreground text-lg font-medium leading-relaxed">We specialize in permanent, high-integrity static codes. No subscriptions, no redirects, and zero latency—forever.</p>
                 </div>
                 <div className="space-y-6">
-                  <h4 className="text-2xl font-black tracking-tight">Visual Integrity</h4>
+                  <h3 className="text-2xl font-black tracking-tight">Visual Integrity</h3>
                   <p className="text-muted-foreground text-lg font-medium leading-relaxed">Our algorithms maintain scanability even with custom gradients and logo overlays by managing contrast ratios automatically.</p>
                 </div>
               </div>

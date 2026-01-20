@@ -151,8 +151,9 @@ const QRControlsComponent = () => {
                                                 <FormItem>
                                                     <Label>Primary Tint</Label>
                                                     <div className="flex gap-3">
-                                                        <Input type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" />
-                                                        <Input {...field} placeholder="#000000" className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" />
+                                                        <label className="sr-only" htmlFor="fg-color-picker">Primary color picker</label>
+                                                        <Input id="fg-color-picker" type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" aria-label="Primary tint color picker" />
+                                                        <Input {...field} placeholder="#000000" className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" aria-label="Primary tint hex value" />
                                                     </div>
                                                 </FormItem>
                                             )}
@@ -164,8 +165,9 @@ const QRControlsComponent = () => {
                                                 <FormItem>
                                                     <Label>Canvas Base</Label>
                                                     <div className="flex gap-3">
-                                                        <Input type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" />
-                                                        <Input {...field} placeholder="#ffffff" className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" />
+                                                        <label className="sr-only" htmlFor="bg-color-picker">Background color picker</label>
+                                                        <Input id="bg-color-picker" type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" aria-label="Canvas base color picker" />
+                                                        <Input {...field} placeholder="#ffffff" className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" aria-label="Canvas base hex value" />
                                                     </div>
                                                 </FormItem>
                                             )}
@@ -187,8 +189,9 @@ const QRControlsComponent = () => {
                                                     <FormItem>
                                                         <Label>Origin Color</Label>
                                                         <div className="flex gap-3">
-                                                            <Input type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" />
-                                                            <Input {...field} className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" />
+                                                            <label className="sr-only" htmlFor="gradient-color1-picker">Gradient origin color picker</label>
+                                                            <Input id="gradient-color1-picker" type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" aria-label="Gradient origin color picker" />
+                                                            <Input {...field} className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" aria-label="Gradient origin hex value" />
                                                         </div>
                                                     </FormItem>
                                                 )}
@@ -200,8 +203,9 @@ const QRControlsComponent = () => {
                                                     <FormItem>
                                                         <Label>Target Color</Label>
                                                         <div className="flex gap-3">
-                                                            <Input type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" />
-                                                            <Input {...field} className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" />
+                                                            <label className="sr-only" htmlFor="gradient-color2-picker">Gradient target color picker</label>
+                                                            <Input id="gradient-color2-picker" type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" aria-label="Gradient target color picker" />
+                                                            <Input {...field} className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" aria-label="Gradient target hex value" />
                                                         </div>
                                                     </FormItem>
                                                 )}
@@ -291,6 +295,7 @@ const QRControlsComponent = () => {
                                 <Switch
                                     checked={!!watch("eyeColor")}
                                     onCheckedChange={(checked) => setValue("eyeColor", checked ? watch("fgColor") : undefined)}
+                                    aria-label="Toggle custom eye tint"
                                 />
                             </div>
 
@@ -308,8 +313,9 @@ const QRControlsComponent = () => {
                                             render={({ field }) => (
                                                 <FormItem className="pt-2">
                                                     <div className="flex gap-3">
-                                                        <Input type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" />
-                                                        <Input {...field} placeholder="#000000" className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" />
+                                                        <label className="sr-only" htmlFor="eye-color-picker">Eye tint color picker</label>
+                                                        <Input id="eye-color-picker" type="color" {...field} className="w-12 h-12 p-1 rounded-xl cursor-pointer border-border bg-background" aria-label="Eye tint color picker" />
+                                                        <Input {...field} placeholder="#000000" className="flex-1 h-12 rounded-xl border-border bg-background font-mono font-bold" aria-label="Eye tint hex value" />
                                                     </div>
                                                 </FormItem>
                                             )}
@@ -400,11 +406,14 @@ const QRControlsComponent = () => {
                                                 <p className="text-[10px] text-muted-foreground font-medium">PNG, JPG, SVG • Max 2MB</p>
                                             </div>
                                         </div>
+                                        <label htmlFor="logo-upload" className="sr-only">Upload logo image</label>
                                         <input
+                                            id="logo-upload"
                                             type="file"
                                             className="absolute inset-0 opacity-0 cursor-pointer"
                                             accept="image/*"
                                             onChange={handleLogoUpload}
+                                            aria-label="Upload logo image file"
                                         />
                                     </div>
                                 ) : (

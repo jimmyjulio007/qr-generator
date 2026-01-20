@@ -135,6 +135,7 @@ export function QRGenerator() {
                                                 size="icon"
                                                 onClick={() => form.reset()}
                                                 className="rounded-full h-10 w-10 border-border hover:bg-muted transition-colors"
+                                                aria-label="Reset configuration to defaults"
                                             >
                                                 <RefreshCcw className="w-4 h-4" />
                                             </Button>

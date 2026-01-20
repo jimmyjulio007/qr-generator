@@ -73,6 +73,7 @@ export function QRHistory({ history, deleteHistory, onSelect }: QRHistoryProps) 
                                         size="icon"
                                         className="w-10 h-10 rounded-full bg-background/90 backdrop-blur border-border hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                                         onClick={() => onSelect(item)}
+                                        aria-label={`Restore configuration: ${item.name}`}
                                     >
                                         <RefreshCcw className="w-4 h-4" />
                                     </Button>
@@ -83,6 +84,7 @@ export function QRHistory({ history, deleteHistory, onSelect }: QRHistoryProps) 
                                                 variant="outline"
                                                 size="icon"
                                                 className="w-10 h-10 rounded-full bg-background/90 backdrop-blur border-border text-destructive hover:bg-destructive hover:text-white transition-all duration-300"
+                                                aria-label={`Delete configuration: ${item.name}`}
                                             >
                                                 <Trash2 className="w-4 h-4" />
                                             </Button>
