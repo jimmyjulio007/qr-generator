@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { QRGenerator } from "@/features/qr-generator/components/qr-generator";
-import { Sparkles, ShieldCheck, Zap, Download, Layers } from "lucide-react";
+import { Sparkles, ShieldCheck, Zap, Layers, Coffee } from "lucide-react";
 
 export default function Home() {
   return (
@@ -81,6 +82,16 @@ export default function Home() {
               <div className="w-3 h-3 rounded-full bg-foreground" />
               <div className="w-3 h-3 rounded-full bg-foreground" />
             </div>
+
+            <Link
+              href="https://buymeacoffee.com/jimmyjulio"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#FFDD00] text-black font-bold text-sm hover:scale-105 hover:shadow-lg hover:shadow-[#FFDD00]/20 transition-all duration-300"
+            >
+              <Coffee className="w-5 h-5 group-hover:-rotate-12 transition-transform duration-300" />
+              <span>Buy me a coffee</span>
+            </Link>
+
             <p className="text-[11px] font-black tracking-[0.5em] uppercase text-muted-foreground">
               © {new Date().getFullYear()} PRECISION QR — CRAFTED FOR EXCELLENCE
             </p>
