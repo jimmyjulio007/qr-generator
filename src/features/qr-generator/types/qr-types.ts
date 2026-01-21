@@ -8,7 +8,7 @@ export type GradientType = 'none' | 'linear' | 'radial';
 
 export const qrFormSchema = z.object({
     type: z.enum(['url', 'text', 'phone', 'email', 'whatsapp', 'wifi', 'location']).default('url'),
-    url: z.string().url().optional().or(z.literal('')),
+    url: z.url().optional().or(z.literal('')),
     text: z.string().optional().default(''),
     phone: z.string().optional().default(''),
     email: z.object({
